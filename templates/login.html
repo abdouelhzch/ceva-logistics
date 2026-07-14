@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CEVA Logistics - Login</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-        body {
-            font-family: 'Inter', Arial, sans-serif;
+        body{
+            font-family:'Inter',sans-serif;
         }
 
         .background{
@@ -21,89 +23,128 @@
             background-attachment:fixed;
         }
 
-        .glass {
-            background: rgba(0, 58, 112, 0.78);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+        .glass{
+            background:rgba(0,58,112,.78);
+            backdrop-filter:blur(18px);
+            -webkit-backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,.2);
+            box-shadow:0 25px 60px rgba(0,0,0,.45);
         }
 
-        .title {
-            background: linear-gradient(90deg, #00b4ff, #7ed6ff, #00b4ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 4px 15px rgba(0, 180, 255, 0.5);
+        .title{
+            background:linear-gradient(90deg,#00b4ff,#7ed6ff,#00b4ff);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            text-shadow:0 4px 15px rgba(0,180,255,.5);
         }
     </style>
+
 </head>
+
 <body class="background min-h-screen flex items-center justify-center p-4">
 
-<div class="glass rounded-3xl p-8 w-[380px] text-white">   <!-- sghar chwiya -->
+<div class="glass rounded-3xl p-8 w-[420px] text-white">
 
     <!-- Logo -->
     <div class="flex justify-center mb-6">
         <img src="/static/images/logo.png"
-             alt="CEVA Logo"
-             class="w-60 drop-shadow-2xl">   <!-- nkabro chwiya -->
+             alt="CEVA Logistics"
+             class="w-56">
     </div>
 
     <!-- Title -->
-    <h2 class="title text-3xl font-bold text-center mb-9 tracking-tight">
+    <h2 class="title text-4xl font-bold text-center mb-8">
         Logistics Management System
     </h2>
 
     <form method="POST" class="space-y-6">
 
-        <div>
-            <input type="text"
-                   name="username"
-                   value="Transit@Ceva"
-                   placeholder="Nom d'utilisateur"
-                   class="w-full px-6 py-4 bg-white/10 border border-white/30 rounded-2xl focus:outline-none text-white placeholder-white/70 text-base focus:ring-2 focus:ring-[#00b4ff]">
-        </div>
+        <!-- Username -->
+        <input
+                type="text"
+                name="username"
+                placeholder="Nom d'utilisateur"
+                autocomplete="off"
+                required
+                class="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white placeholder-white/70 text-lg">
 
+        <!-- Password -->
         <div class="relative">
-            <input type="password"
-                   id="password"
-                   name="password"
-                   value="ceva2026"
-                   placeholder="Mot de passe"
-                   class="w-full px-6 py-4 bg-white/20 border border-white/40 rounded-2xl focus:outline-none text-white placeholder-white/70 text-base focus:ring-2 focus:ring-[#00b4ff]">
-            <button type="button" id="togglePassword" class="absolute right-6 top-1/2 -translate-y-1/2 text-white/80 hover:text-white">
-                <i class="fas fa-eye text-2xl"></i>
+
+            <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Mot de passe"
+                    autocomplete="off"
+                    required
+                    class="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white placeholder-white/70 text-lg">
+
+            <button
+                    type="button"
+                    id="togglePassword"
+                    class="absolute right-5 top-1/2 -translate-y-1/2 text-white">
+
+                <i class="fas fa-eye text-xl"></i>
+
             </button>
+
         </div>
 
-        <div class="flex items-center justify-between text-sm">
-            <label class="flex items-center cursor-pointer">
-                <input type="checkbox" name="remember" class="w-5 h-5 accent-[#00b4ff]">
-                <span class="ml-3">Se souvenir de moi</span>
+        <!-- Remember -->
+        <div class="flex justify-between items-center text-sm">
+
+            <label class="flex items-center gap-2">
+
+                <input
+                        type="checkbox"
+                        name="remember"
+                        class="w-5 h-5 accent-cyan-500">
+
+                Se souvenir de moi
+
             </label>
-            <a href="#" class="hover:underline hover:text-[#7ed6ff]">Mot de passe oublié ?</a>
+
+            <a href="#" class="hover:text-cyan-300">
+                Mot de passe oublié ?
+            </a>
+
         </div>
 
-        <button type="submit"
-                class="w-full py-4 bg-[#003A70] hover:bg-[#002a57] transition-all duration-300 rounded-2xl text-lg font-semibold shadow-xl hover:scale-[1.02]">
+        <!-- Button -->
+        <button
+                type="submit"
+                class="w-full py-4 rounded-2xl bg-[#003A70] hover:bg-[#002b54] transition text-xl font-semibold">
+
             Se connecter
+
         </button>
 
     </form>
+
 </div>
 
 <script>
-    const toggleBtn = document.getElementById('togglePassword');
-    const passwordInput = document.getElementById('password');
 
-    toggleBtn.addEventListener('click', () => {
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            toggleBtn.innerHTML = `<i class="fas fa-eye-slash text-2xl"></i>`;
-        } else {
-            passwordInput.type = 'password';
-            toggleBtn.innerHTML = `<i class="fas fa-eye text-2xl"></i>`;
-        }
-    });
+const togglePassword=document.getElementById("togglePassword");
+const password=document.getElementById("password");
+
+togglePassword.addEventListener("click",()=>{
+
+    if(password.type==="password"){
+
+        password.type="text";
+        togglePassword.innerHTML='<i class="fas fa-eye-slash text-xl"></i>';
+
+    }else{
+
+        password.type="password";
+        togglePassword.innerHTML='<i class="fas fa-eye text-xl"></i>';
+
+    }
+
+});
+
 </script>
 
 </body>
