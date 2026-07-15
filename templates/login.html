@@ -1,120 +1,417 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEVA Logistics - Login</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+<title>CEVA Logistics - Login</title>
 
-        body{
-            font-family:'Inter',sans-serif;
-        }
+<script src="https://cdn.tailwindcss.com"></script>
 
-        .background{
-            background-image:url("/static/images/background.png");
-            background-size:cover;
-            background-position:center;
-            background-repeat:no-repeat;
-            background-attachment:fixed;
-        }
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        .glass{
-            background:rgba(0,58,112,.78);
-            backdrop-filter:blur(18px);
-            -webkit-backdrop-filter:blur(18px);
-            border:1px solid rgba(255,255,255,.2);
-            box-shadow:0 25px 60px rgba(0,0,0,.45);
-        }
+<style>
 
-        .title{
-            background:linear-gradient(90deg,#00b4ff,#7ed6ff,#00b4ff);
-            -webkit-background-clip:text;
-            -webkit-text-fill-color:transparent;
-            text-shadow:0 4px 15px rgba(0,180,255,.5);
-        }
-    </style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+height:100vh;
+
+background:url("/static/images/background.png") center center/cover no-repeat fixed;
+
+overflow:hidden;
+
+position:relative;
+
+}
+
+/* Overlay */
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,25,60,.35);
+
+backdrop-filter:blur(2px);
+
+}
+
+/* Card */
+
+.login-card{
+
+position:relative;
+
+z-index:10;
+
+width:360px;
+
+padding:28px;
+
+border-radius:22px;
+
+background:rgba(4,48,90,.80);
+
+border:1px solid rgba(255,255,255,.15);
+
+backdrop-filter:blur(18px);
+
+-webkit-backdrop-filter:blur(18px);
+
+box-shadow:
+
+0 20px 45px rgba(0,0,0,.45),
+
+0 0 25px rgba(0,180,255,.18);
+
+animation:fade .8s ease;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px) scale(.95);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0) scale(1);
+
+}
+
+}
+
+/* Logo */
+
+.logo{
+
+width:155px;
+
+display:block;
+
+margin:auto;
+
+margin-bottom:18px;
+
+filter:drop-shadow(0 0 18px rgba(0,180,255,.7));
+
+transition:.35s;
+
+}
+
+.logo:hover{
+
+transform:scale(1.05);
+
+}
+
+/* Title */
+
+.title{
+
+text-align:center;
+
+font-size:28px;
+
+font-weight:800;
+
+line-height:35px;
+
+margin-bottom:22px;
+
+background:linear-gradient(90deg,#58d5ff,#00bfff,#86deff);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+/* Inputs */
+
+.input{
+
+width:100%;
+
+height:46px;
+
+padding:0 16px;
+
+margin-bottom:14px;
+
+border-radius:12px;
+
+border:1px solid rgba(255,255,255,.18);
+
+background:rgba(255,255,255,.10);
+
+color:white;
+
+font-size:14px;
+
+transition:.3s;
+
+}
+
+.input::placeholder{
+
+color:rgba(255,255,255,.65);
+
+}
+
+.input:focus{
+
+outline:none;
+
+border-color:#00bfff;
+
+background:rgba(255,255,255,.16);
+
+box-shadow:0 0 15px rgba(0,191,255,.45);
+
+}
+
+/* Password */
+
+.password-box{
+
+position:relative;
+
+}
+
+.eye{
+
+position:absolute;
+
+right:16px;
+
+top:50%;
+
+transform:translateY(-50%);
+
+background:none;
+
+border:none;
+
+cursor:pointer;
+
+color:white;
+
+font-size:18px;
+
+}
+
+/* Options */
+
+.options{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+font-size:13px;
+
+margin:5px 0 20px;
+
+}
+
+.options label{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+cursor:pointer;
+
+}
+
+.options a{
+
+color:white;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+.options a:hover{
+
+color:#58d5ff;
+
+}
+
+/* Button */
+
+.login-btn{
+
+width:100%;
+
+height:48px;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+font-size:16px;
+
+font-weight:700;
+
+color:white;
+
+background:linear-gradient(90deg,#004c97,#0078d7,#00bfff);
+
+transition:.3s;
+
+}
+
+.login-btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 10px 25px rgba(0,180,255,.45);
+
+}
+
+/* Footer */
+
+.footer{
+
+margin-top:18px;
+
+text-align:center;
+
+font-size:11px;
+
+line-height:18px;
+
+color:rgba(255,255,255,.65);
+
+}
+
+</style>
 
 </head>
 
-<body class="background min-h-screen flex items-center justify-center p-4">
+<body>
 
-<div class="glass rounded-3xl p-8 w-[420px] text-white">
+<div class="login-card">
 
     <!-- Logo -->
-    <div class="flex justify-center mb-6">
-        <img src="/static/images/logo.png"
-             alt="CEVA Logistics"
-             class="w-56">
-    </div>
+    <img src="/static/images/logo.png"
+         alt="CEVA Logistics"
+         class="logo">
 
     <!-- Title -->
-    <h2 class="title text-4xl font-bold text-center mb-8">
-        Logistics Management System
+    <h2 class="title">
+        Logistics<br>
+        Management System
     </h2>
 
-    <form method="POST" class="space-y-6">
+    <form method="POST">
 
         <!-- Username -->
+
         <input
-                type="text"
-                name="username"
-                placeholder="Nom d'utilisateur"
-                autocomplete="off"
-                required
-                class="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white placeholder-white/70 text-lg">
+            type="text"
+            name="username"
+            placeholder="Nom d'utilisateur"
+            autocomplete="off"
+            required
+            class="input">
 
         <!-- Password -->
-        <div class="relative">
+
+        <div class="password-box">
 
             <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Mot de passe"
-                    autocomplete="off"
-                    required
-                    class="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white placeholder-white/70 text-lg">
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Mot de passe"
+                autocomplete="off"
+                required
+                class="input">
 
             <button
-                    type="button"
-                    id="togglePassword"
-                    class="absolute right-5 top-1/2 -translate-y-1/2 text-white">
+                type="button"
+                id="togglePassword"
+                class="eye">
 
-                <i class="fas fa-eye text-xl"></i>
+                <i class="fa-solid fa-eye"></i>
 
             </button>
 
         </div>
 
         <!-- Remember -->
-        <div class="flex justify-between items-center text-sm">
 
-            <label class="flex items-center gap-2">
+        <div class="options">
+
+            <label>
 
                 <input
-                        type="checkbox"
-                        name="remember"
-                        class="w-5 h-5 accent-cyan-500">
+                    type="checkbox"
+                    class="accent-cyan-500">
 
                 Se souvenir de moi
 
             </label>
 
-            <a href="#" class="hover:text-cyan-300">
+            <a href="#">
+
                 Mot de passe oublié ?
+
             </a>
 
         </div>
 
-        <!-- Button -->
+        <!-- Login -->
+
         <button
-                type="submit"
-                class="w-full py-4 rounded-2xl bg-[#003A70] hover:bg-[#002b54] transition text-xl font-semibold">
+            type="submit"
+            class="login-btn">
+
+            <i class="fa-solid fa-right-to-bracket"></i>
+
+            &nbsp;
 
             Se connecter
 
@@ -122,30 +419,84 @@
 
     </form>
 
+    <!-- Footer -->
+
+    <div class="footer">
+
+        © 2026 CEVA Logistics
+
+        <br>
+
+        Operations Management System
+
+    </div>
+
+
 </div>
 
 <script>
 
-const togglePassword=document.getElementById("togglePassword");
-const password=document.getElementById("password");
+const toggle = document.getElementById("togglePassword");
+const password = document.getElementById("password");
 
-togglePassword.addEventListener("click",()=>{
+toggle.addEventListener("click", function () {
 
-    if(password.type==="password"){
+    if (password.type === "password") {
 
-        password.type="text";
-        togglePassword.innerHTML='<i class="fas fa-eye-slash text-xl"></i>';
+        password.type = "text";
 
-    }else{
+        this.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
 
-        password.type="password";
-        togglePassword.innerHTML='<i class="fas fa-eye text-xl"></i>';
+    } else {
+
+        password.type = "password";
+
+        this.innerHTML = '<i class="fa-solid fa-eye"></i>';
 
     }
+
+});
+
+
+/* Animation des inputs */
+
+const inputs = document.querySelectorAll(".input");
+
+inputs.forEach(input => {
+
+    input.addEventListener("focus", () => {
+
+        input.style.transform = "scale(1.02)";
+
+    });
+
+    input.addEventListener("blur", () => {
+
+        input.style.transform = "scale(1)";
+
+    });
+
+});
+
+
+/* Animation du bouton */
+
+const btn = document.querySelector(".login-btn");
+
+btn.addEventListener("mouseenter", () => {
+
+    btn.style.transform = "translateY(-3px)";
+
+});
+
+btn.addEventListener("mouseleave", () => {
+
+    btn.style.transform = "translateY(0px)";
 
 });
 
 </script>
 
 </body>
+
 </html>
